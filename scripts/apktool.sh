@@ -183,6 +183,9 @@ DEX_TO_API()
 
     local API
     case "$DEX_VERSION" in
+        "31")
+            API="21"
+            ;;
         "35")
             API="23"
             ;;
@@ -202,7 +205,8 @@ DEX_TO_API()
             API="35"
             ;;
         *)
-            LOGE "Unknown DEX format version ($DEX_VERSION) found in ${DEX_FILE//$APKTOOL_DIR\//}"
+            LOGW "Unknown DEX format version ($DEX_VERSION). Using API 33 as fallback."
+            API="33"
             ;;
     esac
 
