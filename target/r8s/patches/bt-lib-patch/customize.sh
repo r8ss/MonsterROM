@@ -25,6 +25,9 @@ if [ ! -f "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" ]; then
     LOG_STEP_OUT
 fi
 
-# https://github.com/duhansysl/Bluetooth-Library-Patcher/blob/67e598ad142ed296b487a7a4585927c993d4f35d/hexpatcher.sh#L43
-HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
-    "289777394805003736008052" "289777392a00001436008052"
+# Patch desativado para One UI 8.0 (Android 16)
+# O binario mudou e a assinatura 289777394805003736008052 nao existe mais nesta versao.
+LOG "- Skipping Bluetooth HEX_PATCH (Incompatible with Android 16)"
+
+# HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
+#    "289777394805003736008052" "289777392a00001436008052"
