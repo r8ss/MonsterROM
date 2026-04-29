@@ -17,25 +17,23 @@ do
     DELETE_FROM_WORK_DIR "vendor" "$blob"
 done
 
+# ==========================================
+# 1. RESTORE ALL VENDOR FEATURES
+# These are the files that make Face Recognition and Vibration work
+# ==========================================
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "bin/hw/vendor.samsung.hardware.biometrics.face@3.0-service"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "bin/hw/vendor.samsung.hardware.vibrator-service"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "lib64"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/init"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/vintf"
 
-# WPA Supplicant HAL
-if [[ "$TARGET_CODENAME" != "r8s" ]]; then
-    ADD_TO_WORK_DIR "p3sxxx" "vendor" "bin/hw/wpa_supplicant"
-fi
-
-# Light HAL
+# ==========================================
+# 2. Light HAL (Blocked for r8s to ensure stability)
+# ==========================================
 if [[ "$TARGET_CODENAME" != "r8s" ]]; then
     ADD_TO_WORK_DIR "p3sxxx" "vendor" "bin/hw/vendor.samsung.hardware.light-service"
     ADD_TO_WORK_DIR "p3sxxx" "vendor" "lib64/android.hardware.light-V1-ndk_platform.so"
     ADD_TO_WORK_DIR "p3sxxx" "vendor" "lib64/vendor.samsung.hardware.light-V1-ndk_platform.so"
-else
-    ADD_TO_WORK_DIR "a73xqxx" "vendor" "bin/hw/vendor.samsung.hardware.light-service"
-    ADD_TO_WORK_DIR "a73xqxx" "vendor" "lib64/android.hardware.light-V1-ndk_platform.so"
-    ADD_TO_WORK_DIR "a73xqxx" "vendor" "lib64/vendor.samsung.hardware.light-V1-ndk_platform.so"
 fi
+
 LOG_STEP_OUT
