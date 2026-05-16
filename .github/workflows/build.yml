@@ -82,7 +82,7 @@ jobs:
 
       - name: Build ROM
         run: |
-          chmod +x scripts/internal/build_flashable_zip.sh
+          chmod +x scripts/internal/build_odin_package.sh
           source ./buildenv.sh ${{ matrix.target }}
           ./scripts/make_rom.sh --force
 
